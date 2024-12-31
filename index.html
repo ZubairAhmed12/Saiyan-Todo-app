@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo Saiyan App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <h1>Todo Saiyan App</h1>
+      <button id="menu-button" class="menu-button">☰</button>
+    </header>
+
+    <div id="menu-panel" class="menu-panel hidden">
+      <ul>
+        <li><button id="dark-mode-toggle">Toggle Dark Mode</button></li>
+        <li><button id="reset-tasks">Reset Tasks</button></li>
+        <li><button id="view-levels">View Levels</button></li>
+        <li><button id="reset-all">Reset All</button></li>
+        <li><button id="point-system-info">How Points Work</button></li>
+        <li><button id="export-json">Export Tasks</button></li>
+        <li><button id="import-json">Import Tasks</button></li>
+      </ul>
+    </div>
+
+    <main class="main-content">
+      <section id="saiyan-stats" class="stats-section">
+        <p><strong>Saiyan Points:</strong> <span id="saiyan-points">0</span></p>
+        <p><strong>Saiyan Level:</strong> <span id="saiyan-level">Kaioken</span></p>
+      </section>
+
+      <!-- Modal structure for Saiyan Levels -->
+      <div id="saiyan-level-modal" class="modal hidden">
+        <div class="modal-content">
+          <button class="close" id="close-saiyan-level-modal">✖</button>
+          <h2>How Saiyan Levels Work</h2>
+          <p>Earn 100 points to upgrade your Saiyan level.</p>
+          <ul>
+            <li>Kaioken (0-1000)</li>
+            <li>Super Saiyan (1000-5000)</li>
+            <li>Super Saiyan 2 (5000-15000)</li>
+            <li>Super Saiyan 3 (15000-40000)</li>
+            <li>Super Saiyan God (40000-120000)</li>
+            <li>Super Saiyan Blue (120000-250000)</li>
+            <li>Ultra Instinct (250000-400000)</li>
+            <li>Mastered Ultra Instinct (400000-800000)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Modal structure for Task Settings -->
+      <div id="task-settings-modal" class="modal hidden">
+        <div class="modal-content">
+          <button class="close" id="close-task-settings-modal">✖</button>
+          <h2>Task Settings</h2>
+          <p id="task-settings-info"></p>
+          <button id="delete-task">Delete Task</button>
+          <label>
+            Change Difficulty:
+            <select id="change-task-difficulty">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </label>
+          <button id="apply-penalty">Apply Penalty</button>
+        </div>
+      </div>
+
+      <!-- New Modal for Point System Information -->
+      <div id="point-system-modal" class="modal hidden">
+        <div class="modal-content">
+          <button class="close" id="close-point-system-modal">✖</button>
+          <h2>How Points Work</h2>
+          <p>
+            This is how this app works and how points work.<br><br>
+
+            You will add tasks. Depending on the difficulty you'll add points to it.<br>
+            Highest difficulty point is 5.<br>
+            And if you don't complete a task you've a penalty button. You have to penalize yourself manually. <br><br>
+
+            Penalty point depends on the difficulty of that task. <br>
+            This is the system: <br>
+            For 5 difficulty task, penalty is 7<br>
+            For 4 difficulty task, penalty is 6<br>
+            For 3 difficulty task, penalty is 4<br>
+            For 2 difficulty task, penalty is 2<br>
+            For 1 difficulty task, penalty is 1<br><br>
+
+            But if you reach Saiyan points 15000 means you're now super Saiyan then you can add tasks up to difficulty
+            level 10 and from that point, there won't be any penalty points. <br>
+            Reason for no penalty? <br>
+            You've already achieved so much that you know what you're doing. If you don't complete a task by that time,
+            you probably have something better to do. No penalty.<br><br>
+
+            And after reaching 120000 points you can choose task difficulty up to 30. Because at that time your task
+            will be of more importance for sure. You might be a millionaire by that time.<br><br>
+
+            Hold yourself accountable and every morning hit the penalty button if you don't complete any task.<br>
+            And there's a task reset button. day It'll reset your task. But the points will be the same. You have to do
+            it manually every day.<br><br>
+
+            And there's a reset all option. It'll reset all your progress<br><br>
+
+            Remember to export your data continuously after a few weeks. To keep your data safe from unnecessary data
+            loss.
+          </p>
+        </div>
+      </div>
+
+      <section class="task-section">
+        <form id="task-form" class="task-form">
+          <input type="text" id="task-name" placeholder="Task Name" required>
+          <input type="number" id="task-difficulty" min="1" max="5" placeholder="Difficulty (1-5)" required>
+          <button type="submit">Add Task</button>
+        </form>
+
+        <ul id="task-list" class="task-list"></ul>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
